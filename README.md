@@ -42,30 +42,37 @@ The dataset represents results from **17 direct marketing campaigns** conducted 
 - “Unknown” values used instead of NaN (by design)
 
 ---
-
 ## Exploratory Data Analysis (EDA)
 
-### Target Distribution
-Illustrates the severe class imbalance and motivates the use of recall- and F1-based evaluation metrics.
+The exploratory analysis focused on understanding the structure of the data, identifying potential data quality issues, and assessing factors that influence subscription behavior.
 
-**[INSERT FIGURE: Target Distribution Bar Chart]**  
-`images/eda_target_distribution.png`
+### Key Findings
 
----
+- **Severe class imbalance**
+  - Approximately 11% of customers subscribed to a term deposit.
+  - A naïve model predicting all customers as “no” achieves high accuracy but provides no business value.
 
-### Age Distribution by Subscription Outcome
-Shows differences in age distributions between subscribers and non-subscribers.
+- **Customer demographics**
+  - Age distributions differ slightly between subscribers and non-subscribers, with older customers showing marginally higher subscription rates.
+  - Certain job categories (e.g., retired, student, management) exhibit higher relative subscription likelihood.
 
-**[INSERT FIGURE: Age Distribution by Target]**  
-`images/eda_age_by_target.png`
+- **Categorical feature dominance**
+  - Most input features are categorical, requiring encoding prior to modeling.
+  - Several features include an explicit `"unknown"` category, indicating missing or undisclosed information rather than true null values.
 
----
+- **Implicit missingness**
+  - Missing data is represented using sentinel values (e.g., `"unknown"` or `pdays = 999`) instead of NaN.
+  - These values were retained and treated as meaningful categories during modeling.
 
-### Subscription Rate by Customer Segment
-Highlights customer segments with higher likelihood of subscribing to a term deposit.
+- **Limited predictive power of client attributes alone**
+  - Bank client features provide some signal but are insufficient for strong subscriber prediction on their own.
+  - This suggests the importance of incorporating campaign history and economic indicators in future modeling stages.
 
-**[INSERT FIGURE: Subscription Rate by Job / Education / Marital Status]**  
-`images/eda_subscription_rate_by_segment.png`
+### EDA Implications for Modeling
+
+- Accuracy is an unreliable metric due to class imbalance.
+- Recall and F1 score are more appropriate for evaluating subscriber identification.
+- Feature engineering and model tuning are required to extract meaningful performance from the data.
 
 ---
 
