@@ -1,4 +1,4 @@
-# Bank Marketing Campaign Analysis (CRISP-DM)
+# Bank Marketing Campaign Analysis
 
 ## Project Overview
 This project applies machine learning techniques to improve the effectiveness of direct marketing campaigns for a Portuguese banking institution. Using the Bank Marketing dataset from the UCI Machine Learning Repository, the analysis focuses on identifying customers most likely to subscribe to a term deposit while addressing significant class imbalance.
