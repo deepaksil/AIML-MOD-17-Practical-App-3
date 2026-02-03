@@ -107,30 +107,44 @@ A naïve baseline predicts all customers as “no.”
 This establishes a realistic benchmark that meaningful models must outperform.
 
 ---
-
 ## Model Evaluation (CRISP-DM Phase 5)
 
-### Default Model Comparison (Problem 10)
-Default model configurations achieve high accuracy but perform poorly at identifying subscribers, confirming that accuracy alone is misleading.
+Model performance was evaluated using both training and test data to assess generalization, overfitting, and alignment with the business objective of identifying subscribers. Due to significant class imbalance, accuracy alone was not used as the primary success metric.
 
-**[INSERT FIGURE: Default Models – F1 Score Comparison]**  
-`images/problem10_default_models_f1.png`
+### Default Model Performance (Problem 10)
+
+Using default model configurations, all evaluated algorithms achieved high test accuracy (approximately 86–89%). However, this performance was driven almost entirely by the majority class (“no”), resulting in poor identification of subscribing customers.
+
+Key observations from default models include:
+
+- **Logistic Regression** and **SVM** generalized well in terms of accuracy but failed to identify any subscribers, yielding zero recall and F1 score for the positive class.
+- **Decision Tree** achieved near-perfect training accuracy, indicating overfitting, but showed limited recall on the test set.
+- **KNN** identified a small number of subscribers but suffered from low recall and limited overall usefulness.
+
+These results confirm that accuracy is a misleading metric for this problem and motivate the need for metric realignment and model tuning.
 
 ---
 
-### Tuned Model Comparison (Problem 11)
-After hyperparameter tuning and metric alignment, models show substantial improvement in recall and F1 score.
+### Improved Model Performance (Problem 11)
 
-**[INSERT FIGURE: Tuned Models – F1 Score Comparison]**  
-`images/problem11_tuned_models_f1.png`
+To address the shortcomings of default models, hyperparameter tuning and metric adjustment were applied. Models were optimized using recall and F1 score for the positive class to better align with the business objective.
+
+Key findings from tuned models include:
+
+- **Logistic Regression (tuned)** achieved the best balance between recall, F1 score, stability, and computational efficiency.
+- **Decision Tree (tuned)** maximized recall by aggressively identifying subscribers but did so at the cost of reduced accuracy and precision.
+- **Linear SVM (tuned)** produced comparable recall and F1 scores to Logistic Regression but required more computational effort.
+- **KNN (tuned)** showed limited improvement and remained less effective relative to other models.
+
+Overall, tuning and metric alignment significantly improved model effectiveness, demonstrating that optimization strategy had a greater impact on performance than algorithm complexity.
 
 ---
 
-### Performance vs. Cost Tradeoff
-Compares predictive effectiveness (F1 score) against training time to assess operational feasibility.
+### Evaluation Summary
 
-**[INSERT FIGURE: Train Time vs F1 Scatter Plot]**  
-`images/train_time_vs_f1_scatter.png`
+- Training accuracy helped identify overfitting behavior, particularly in Decision Trees.
+- Test-set recall and F1 score provided the most meaningful measures of model success.
+- Simpler, well-tuned models outperformed more complex alternatives when evaluated against business-aligned criteria.
 
 ---
 
