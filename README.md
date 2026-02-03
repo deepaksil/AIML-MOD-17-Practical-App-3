@@ -176,3 +176,21 @@ Overall, tuning and metric alignment significantly improved model effectiveness,
 
 ---
 
+## Next Steps
+
+- **Expand Feature Set**  
+   Incorporate campaign history, contact information, and economic indicators to improve predictive signal.
+
+- **Optimize Decision Thresholds**  
+   Tune classification thresholds to balance recall and precision based on marketing cost–benefit tradeoffs.
+
+- **Address Class Imbalance Further**  
+   Explore resampling techniques (e.g., SMOTE, undersampling) alongside class-weighted learning.
+
+- **Improve Model Robustness**  
+   Evaluate ensemble approaches to increase stability and generalization.
+
+- **Enhance Interpretability and Deployment Readiness**  
+   Apply feature attribution methods and package the model using pipelines for consistent inference.
+---
+
